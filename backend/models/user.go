@@ -1,6 +1,8 @@
 package models
 
-import "time"
+import (
+	"time"
+)
 
 type User struct {
 	ID        uint   `json:"id" gorm:"primary_key"`
@@ -9,4 +11,6 @@ type User struct {
 	Email	  string `json:"email" gorm:"unique"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
+
+	Villages []Village `json:"villages" gorm:"foreignKey:UserID"`
 }

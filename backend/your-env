@@ -1,3 +1,0 @@
-PORT=
-DB_URL="host= user= password= port= sslmode=disable"
-SECRET=

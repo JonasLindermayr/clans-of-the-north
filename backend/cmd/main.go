@@ -1,18 +1,35 @@
 package main
 
 import (
-	"net/http"
-
+	"github.com/JonasLindermayr/clans-of-the-north/backend/controllers"
+	"github.com/JonasLindermayr/clans-of-the-north/backend/middleware"
+	"github.com/JonasLindermayr/clans-of-the-north/backend/utils"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
+
+func init() {
+	utils.LoadEnvs()
+	utils.ConnectDB()
+}
 
 func main() {
 
 	router := gin.Default()
 
-	router.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"data": "hello world"})    
-	  })
+
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"*"}, 
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		AllowCredentials: true,
+	}))
+
+
+	router.POST("/auth/signup", controllers.CreateUser)
+	router.POST("/auth/login", controllers.LoginUser)
+	router.GET("/user/profile", middleware.CheckAuth, controllers.GetUserProfile)
+
 
 	router.Run(":8080")
 }
