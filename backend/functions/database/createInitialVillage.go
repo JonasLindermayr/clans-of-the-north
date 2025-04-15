@@ -1,6 +1,7 @@
 package functions
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/JonasLindermayr/clans-of-the-north/backend/functions/cache"
@@ -11,11 +12,18 @@ import (
 
 func createInitialVillage(uuid uint, villageName string) {
 
+
+	tile := FindNextVillageSpot(false)
+	if tile == nil {
+		log.Fatal("error while finding next village spot")
+		return
+	}
+
 	village := models.Village{
 		Name: villageName,
 		UserID: uuid,
-		CordX: 0,
-		CordY: 0,
+		CordX: tile.X,
+		CordY: tile.Y,
 		Points: 0,
 	}
 
@@ -25,6 +33,8 @@ func createInitialVillage(uuid uint, villageName string) {
 		return
 	}
 	
+	tile.VillageID = &village.ID
+	registry.AllTilesInCache[fmt.Sprintf("%d:%d", tile.X, tile.Y)] = tile
 
 	CreateInitialResources(village.ID)
 	CreateInitialBuildings(village.ID)

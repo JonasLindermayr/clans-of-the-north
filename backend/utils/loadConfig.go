@@ -17,6 +17,7 @@ type GameConfig struct {
     PopulationCapacityIncrease      float64 `json:"POPULATION_CAPACITY_MULTIPLY"`
     DefenseBonusMultiply            float64 `json:"DEFENSE_BONUS_MULTIPLY"`
     MaxBuildOrders                  int     `json:"MAX_BUILD_ORDERS"`
+    WorldSize                       int     `json:"WORLD_SIZE"`
 }
 
 var Config *GameConfig

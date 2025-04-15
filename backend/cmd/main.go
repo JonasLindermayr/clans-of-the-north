@@ -2,11 +2,10 @@ package main
 
 import (
 	"github.com/JonasLindermayr/clans-of-the-north/backend/controllers"
-	"github.com/JonasLindermayr/clans-of-the-north/backend/functions/cache"
+	functions "github.com/JonasLindermayr/clans-of-the-north/backend/functions/database"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/middleware"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/registry"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/utils"
-	"github.com/JonasLindermayr/clans-of-the-north/backend/utils/constants"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/workers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -36,9 +35,9 @@ func main() {
 	router.POST("/auth/login", controllers.LoginUser)
 	router.GET("/user/profile", middleware.CheckAuth, controllers.GetUserProfile)
 
-
-	cache.UpgradeBuilding(1, constants.BUILDING_WOOD_CUTTER)
 	
+	functions.CreateForsakenVillage()
+
 	go workers.StartWorkers()
 
 	router.Run(":8080")

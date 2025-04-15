@@ -32,6 +32,6 @@ func main() {
 	if err := utils.DB.Create(&forsakenUser).Error; err != nil {
 		log.Fatal(err.Error())
 	}
-
+	utils.GenerateMap();
 	fmt.Println("Successful migrated database")
 }
