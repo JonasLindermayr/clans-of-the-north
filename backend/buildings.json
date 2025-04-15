@@ -163,7 +163,7 @@
         "stone": 500,
         "clay": 400
       },
-      "buildingTimeDecrease": 15,
+      "buildingTimeDecrease": 0.025,
       "points": 10
     },
     {
