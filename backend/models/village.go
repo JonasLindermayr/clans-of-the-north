@@ -12,4 +12,5 @@ type Village struct {
 	Resources Resources `json:"resources" gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 	Buildings []Buildings `json:"buildings" gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
 	BuildQueue []BuildOrder `json:"buildQueue" gorm:"constraint:OnUpdate:CASCADE,OnDelete:CASCADE;"`
+	Tiles []Tile `json:"tiles" gorm:"foreignKey:VillageID"`
 }

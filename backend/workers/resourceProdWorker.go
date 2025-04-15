@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/JonasLindermayr/clans-of-the-north/backend/models"
+	"github.com/JonasLindermayr/clans-of-the-north/backend/functions/cache"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/registry"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/utils"
+	. "github.com/JonasLindermayr/clans-of-the-north/backend/utils/constants"
 )
 
 func ResourceProdWorker() {
@@ -24,17 +25,17 @@ func ResourceProdWorker() {
 				continue
 			}
 
-			woodcutter := getBuilding(village, 0)
-			stone := getBuilding(village, 1)
-			clay := getBuilding(village, 2)
-			grain := getBuilding(village, 3)
-			gold := getBuilding(village, 9)
+			woodcutter := cache.GetBuilding(village, BUILDING_WOOD_CUTTER)
+			stone := cache.GetBuilding(village, BUILDING_STONE_QUARRY)
+			clay := cache.GetBuilding(village, BUILDING_CLAY_PIT)
+			grain := cache.GetBuilding(village, BUILDING_GRAIN_FIELD)
+			gold := cache.GetBuilding(village, BUILDING_GOLD_MINE)
 
-			woodProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[0].ProductionRate) * float64(woodcutter.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 60
-			stoneProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[1].ProductionRate) * float64(stone.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 60
-			clayProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[2].ProductionRate) * float64(clay.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 60
-			grainProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[3].ProductionRate) * float64(grain.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 60
-			goldProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[9].ProductionRate) * float64(gold.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 86400
+			woodProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[BUILDING_WOOD_CUTTER].ProductionRate) * float64(woodcutter.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 60
+			stoneProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[BUILDING_STONE_QUARRY].ProductionRate) * float64(stone.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 60
+			clayProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[BUILDING_CLAY_PIT].ProductionRate) * float64(clay.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 60
+			grainProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[BUILDING_GRAIN_FIELD].ProductionRate) * float64(grain.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 60
+			goldProductionPerSecond := (float64(utils.BuildingsConfig.Buildings[BUILDING_GOLD_MINE].ProductionRate) * float64(gold.CurrentLevel) * utils.Config.ResourceProductionMultiply) / 86400
 
 			woodProduced := woodProductionPerSecond * delta
 			stoneProduced := stoneProductionPerSecond * delta
@@ -92,14 +93,4 @@ func ResourceProdWorker() {
 			village.Resources.LastResourceUpdate = now
 		}
 	}
-}
-
-
-func getBuilding(village *models.Village, configID int) *models.Buildings{
-	for i := range village.Buildings {
-		if village.Buildings[i].BuildingID == configID {
-			return &village.Buildings[i]
-		}
-	}
-	return nil
 }

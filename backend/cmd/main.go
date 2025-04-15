@@ -6,6 +6,7 @@ import (
 	"github.com/JonasLindermayr/clans-of-the-north/backend/middleware"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/registry"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/utils"
+	"github.com/JonasLindermayr/clans-of-the-north/backend/utils/constants"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/workers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -36,8 +37,8 @@ func main() {
 	router.GET("/user/profile", middleware.CheckAuth, controllers.GetUserProfile)
 
 
-	cache.CreateBuildOrder(1, 0)
-
+	cache.UpgradeBuilding(1, constants.BUILDING_WOOD_CUTTER)
+	
 	go workers.StartWorkers()
 
 	router.Run(":8080")

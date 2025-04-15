@@ -15,7 +15,8 @@ func init() {
 }
 
 func main() {
-	err := utils.DB.AutoMigrate(&models.User{}, &models.Village{}, &models.Resources{}, &models.Buildings{}, &models.BuildOrder{})
+	err := utils.DB.AutoMigrate(&models.User{}, &models.Village{}, &models.Resources{}, 
+								&models.Buildings{}, &models.BuildOrder{}, &models.Tile{})
 
 	if err != nil {
 		fmt.Println(err)
