@@ -4,6 +4,7 @@ import VillagePage from "./pages/game/village";
 import NotFound from "./pages/notfound";
 import { Login } from "./pages/login";
 import { SignUp } from "./pages/signup";
+import { MapView } from "./pages/game/map";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/game/village/:id" element={<VillagePage />} />
+      <Route path="/game/map" element={<MapView />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/JonasLindermayr/clans-of-the-north/backend/controllers"
-	functions "github.com/JonasLindermayr/clans-of-the-north/backend/functions/database"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/middleware"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/registry"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/utils"
@@ -34,9 +33,8 @@ func main() {
 	router.POST("/auth/signup", controllers.CreateUser)
 	router.POST("/auth/login", controllers.LoginUser)
 	router.GET("/user/profile", middleware.CheckAuth, controllers.GetUserProfile)
+	router.GET("/map", controllers.GetMapController)
 
-	
-	functions.CreateForsakenVillage()
 
 	go workers.StartWorkers()
 
