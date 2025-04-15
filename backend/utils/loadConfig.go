@@ -14,8 +14,9 @@ type GameConfig struct {
     BuildingConstructionTimeMultiply float64 `json:"BUILDING_CONSTRUCTION_TIME_MULTIPLY"`
     BuildingConstructionCostMultiply float64 `json:"BUILDING_CONSTRUCTION_COST_MULTIPLY"`
     WarehouseStorageMultiply        float64 `json:"WAREHOUSE_STORAGE_MULTIPLY"`
+    PopulationCapacityIncrease      float64 `json:"POPULATION_CAPACITY_MULTIPLY"`
     DefenseBonusMultiply            float64 `json:"DEFENSE_BONUS_MULTIPLY"`
-    PopulationBaseValue             int     `json:"POPULATION_BASE_VALUE"`
+    MaxBuildOrders                  int     `json:"MAX_BUILD_ORDERS"`
 }
 
 var Config *GameConfig

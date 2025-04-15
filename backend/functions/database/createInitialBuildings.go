@@ -35,6 +35,4 @@ func CreateInitialBuildings(villageID uint) {
 		log.Fatal(err.Error())
 	}
 
-	UpdateVillagePoints(villageID)
-	
 }

@@ -11,16 +11,16 @@ type BuildingInfo struct {
     Name                 string            `json:"name"`
     Description          string            `json:"description"`
     ResourceType         string            `json:"resourceType,omitempty"`
-    ProductionRate       int           `json:"productionRate,omitempty"`
+    ProductionRate       int                `json:"productionRate,omitempty"`
     MaxLevel             int               `json:"maxLevel"`
     StartLevel           int               `json:"startLevel"`
     ConstructionTime     int               `json:"constructionTime"`
     Cost                 map[string]int    `json:"upgradeCost"`
-    PopulationCapacityIncrease int         `json:"population_capacity_increase,omitempty"`
-    DefenseBonus         int               `json:"defense_bonus,omitempty"`
-    BuildingTimeDecrease int               `json:"building_time_decrease,omitempty"`
+    PopulationBaseValue  int               `json:"populationBaseValue,omitempty"`
+    DefenseBonus         float64               `json:"defenseBonus,omitempty"`
+    BuildingTimeDecrease float64               `json:"buildingTimeDecrease,omitempty"`
     Points              int               `json:"points"`
-    BaseStorage         int               `json:"base_storage,omitempty"`
+    BaseStorage         int               `json:"baseStorage,omitempty"`
 }
 
 

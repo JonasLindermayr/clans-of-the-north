@@ -16,9 +16,7 @@ func ResourceProdWorker() {
 	for tick := range ticker.C {
 		fmt.Println("Running resource production tick at", tick)
 
-		for i := range registry.AllVillagesInCache {
-			village := &registry.AllVillagesInCache[i]
-	
+		for _, village := range registry.AllVillagesInCache {
 			now := time.Now()
 			delta := now.Sub(village.Resources.LastResourceUpdate).Seconds()
 
@@ -50,22 +48,52 @@ func ResourceProdWorker() {
 			grainProduced += village.Resources.CarryOverGrain
 			goldProduced += village.Resources.CarryOverGold
 
-			village.Resources.CarryOverWood = woodProduced - float64(int(woodProduced))
-			village.Resources.CarryOverStone = stoneProduced - float64(int(stoneProduced))
-			village.Resources.CarryOverClay = clayProduced - float64(int(clayProduced))
-			village.Resources.CarryOverGrain = grainProduced - float64(int(grainProduced))
-			village.Resources.CarryOverGold = goldProduced - float64(int(goldProduced))
 
-			village.Resources.Wood += int(woodProduced)
-			village.Resources.Stone += int(stoneProduced)
-			village.Resources.Clay += int(clayProduced)
-			village.Resources.Grain += int(grainProduced)
-			village.Resources.Gold += int(goldProduced)
+			if (village.Resources.Wood + int(woodProduced)) >= village.Resources.Storage {
+				village.Resources.Wood = village.Resources.Storage
+				village.Resources.CarryOverWood = 0
+			} else {
+				village.Resources.Wood += int(woodProduced)
+				village.Resources.CarryOverWood = woodProduced - float64(int(woodProduced))
+			}
+
+			if (village.Resources.Stone + int(stoneProduced)) >= village.Resources.Storage {
+				village.Resources.Stone = village.Resources.Storage
+				village.Resources.CarryOverStone = 0
+			} else {
+				village.Resources.Stone += int(stoneProduced)
+				village.Resources.CarryOverStone = stoneProduced - float64(int(stoneProduced))
+			}
+
+			if (village.Resources.Clay + int(clayProduced)) >= village.Resources.Storage {
+				village.Resources.Clay = village.Resources.Storage
+				village.Resources.CarryOverClay = 0
+			} else {
+				village.Resources.Clay += int(clayProduced)
+				village.Resources.CarryOverClay = clayProduced - float64(int(clayProduced))
+			}
+
+			if (village.Resources.Grain + int(grainProduced)) >= village.Resources.Storage {
+				village.Resources.Grain = village.Resources.Storage
+				village.Resources.CarryOverGrain = 0
+			} else {
+				village.Resources.Grain += int(grainProduced)	
+				village.Resources.CarryOverGrain = grainProduced - float64(int(grainProduced))
+			}
+
+			if (village.Resources.Gold + int(goldProduced)) >= village.Resources.Storage {
+				village.Resources.Gold = village.Resources.Storage
+				village.Resources.CarryOverGold = 0
+			} else {
+				village.Resources.Gold += int(goldProduced)
+				village.Resources.CarryOverGold = goldProduced - float64(int(goldProduced))
+			}
 
 			village.Resources.LastResourceUpdate = now
 		}
 	}
 }
+
 
 func getBuilding(village *models.Village, configID int) *models.Buildings{
 	for i := range village.Buildings {

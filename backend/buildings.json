@@ -124,8 +124,8 @@
       "id": 8,
       "name": "Storehouse",
       "description": "A building where the village’s resources are stored.",
-      "maxLevel": 15,
-      "startLevel": 0,
+      "maxLevel": 20,
+      "startLevel": 1,
       "constructionTime": 150,
       "upgradeCost": {
         "wood": 200,
@@ -170,7 +170,7 @@
       "id": 11,
       "name": "Hall of the People",
       "description": "A large hall that can house a growing population.",
-      "maxLevel": 10,
+      "maxLevel": 30,
       "startLevel": 1,
       "constructionTime": 150,
       "upgradeCost": {
@@ -178,7 +178,7 @@
         "stone": 200,
         "clay": 150
       },
-      "populationCapacityIncrease": 10,
+      "populationBaseValue": 400,
       "points": 8
     },
     {

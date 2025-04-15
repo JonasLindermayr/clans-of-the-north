@@ -34,7 +34,7 @@ func main() {
 	router.POST("/auth/login", controllers.LoginUser)
 	router.GET("/user/profile", middleware.CheckAuth, controllers.GetUserProfile)
 
-
 	go workers.StartWorkers()
+
 	router.Run(":8080")
 }

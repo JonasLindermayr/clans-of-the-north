@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/JonasLindermayr/clans-of-the-north/backend/functions"
+	functions "github.com/JonasLindermayr/clans-of-the-north/backend/functions/database"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/models"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/utils"
 	"github.com/gin-gonic/gin"

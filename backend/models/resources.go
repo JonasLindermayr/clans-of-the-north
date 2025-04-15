@@ -10,7 +10,9 @@ type Resources struct {
 	Clay	  int 	  `json:"clay"`
 	Grain 	  int 	  `json:"grain"`
 	Gold      int    `json:"gold"`
+	ClaimedPopulation int    `json:"claimedPopulation"`
 	Population int    `json:"population"`
+	Storage   int    `json:"storage"`
 	CarryOverWood float64 `json:"carryOverWood"`
 	CarryOverStone float64 `json:"carryOverStone"`
 	CarryOverClay float64 `json:"carryOverClay"`

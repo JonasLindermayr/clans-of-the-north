@@ -21,7 +21,9 @@ func CreateInitialResources(villageID uint) {
 		CarryOverClay: 0,
 		CarryOverGrain: 0,
 		CarryOverGold: 0,
-		Population: utils.Config.PopulationBaseValue,
+		ClaimedPopulation: 0,
+		Population: 0,
+		Storage: 0,
 	}
 
 	
