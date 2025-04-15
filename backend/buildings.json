@@ -1,0 +1,202 @@
+{
+  "buildings": [
+    {
+      "id": 0,
+      "name": "Woodcutter’s Hut",
+      "description": "A building where wood is gathered and processed.",
+      "resourceType": "wood",
+      "productionRate": 8,
+      "maxLevel": 30,
+      "startLevel": 1,
+      "constructionTime": 60,
+      "upgradeCost": {
+        "wood": 100,
+        "stone": 50,
+        "clay": 30
+      },
+      "points": 1
+    },
+    {
+      "id": 1,
+      "name": "Stone Quarry",
+      "description": "A site where stone is mined.",
+      "resourceType": "stone",
+      "productionRate": 8,
+      "maxLevel": 30,
+      "startLevel": 1,
+      "constructionTime": 60,
+      "upgradeCost": {
+        "wood": 120,
+        "stone": 80,
+        "clay": 40
+      },
+      "points": 1
+    },
+    {
+      "id": 2,
+      "name": "Clay Pit",
+      "description": "A place where clay is gathered.",
+      "resourceType": "clay",
+      "productionRate": 8,
+      "maxLevel": 30,
+      "startLevel": 1,
+      "constructionTime": 60,
+      "upgradeCost": {
+        "wood": 80,
+        "stone": 40,
+        "clay": 20
+      },
+      "points": 1
+    },
+    {
+      "id": 3,
+      "name": "Grain Field",
+      "description": "A field where grain is grown.",
+      "resourceType": "grain",
+      "productionRate": 8,
+      "maxLevel": 30,
+      "startLevel": 1,
+      "constructionTime": 60,
+      "upgradeCost": {
+        "wood": 150,
+        "stone": 100,
+        "clay": 50
+      },
+      "points": 1
+    },
+    {
+      "id": 4,
+      "name": "Barracks",
+      "description": "A place to train warriors for battle.",
+      "maxLevel": 20,
+      "startLevel": 0,
+      "constructionTime": 120,
+      "upgradeCost": {
+        "wood": 300,
+        "stone": 200,
+        "clay": 100
+      },
+      "points": 3
+    },
+    {
+      "id": 5,
+      "name": "Stables",
+      "description": "A place to raise and train horses for battle.",
+      "maxLevel": 10,
+      "startLevel": 0,
+      "constructionTime": 120,
+      "upgradeCost": {
+        "wood": 350,
+        "stone": 250,
+        "clay": 150
+      },
+      "points": 5
+    },
+    {
+      "id": 6,
+      "name": "Assembly Hall",
+      "description": "A place where the village leaders gather to discuss strategy.",
+      "maxLevel": 5,
+      "startLevel": 1,
+      "constructionTime": 180,
+      "upgradeCost": {
+        "wood": 500,
+        "stone": 400,
+        "clay": 200
+      },
+      "points": 10
+    },
+    {
+      "id": 7,
+      "name": "Forge",
+      "description": "A place where weapons and tools are crafted.",
+      "maxLevel": 15,
+      "startLevel": 0,
+      "constructionTime": 90,
+      "upgradeCost": {
+        "wood": 250,
+        "stone": 300,
+        "clay": 150
+      },
+      "points": 20
+    },
+    {
+      "id": 8,
+      "name": "Storehouse",
+      "description": "A building where the village’s resources are stored.",
+      "maxLevel": 15,
+      "startLevel": 0,
+      "constructionTime": 150,
+      "upgradeCost": {
+        "wood": 200,
+        "stone": 150,
+        "clay": 100
+      },
+      "baseStorage": 1000,
+      "points": 4
+    },
+    {
+      "id": 9,
+      "name": "Gold Mine",
+      "description": "A mine where precious gold is extracted.",
+      "resourceType": "gold",
+      "productionRate": 1,
+      "maxLevel": 5,
+      "startLevel": 0,
+      "constructionTime": 180,
+      "upgradeCost": {
+        "wood": 400,
+        "stone": 500,
+        "clay": 300
+      },
+      "points": 18
+    },
+    {
+      "id": 10,
+      "name": "Longhouse",
+      "description": "The residence of the village chief, used for meetings and feasts.",
+      "maxLevel": 20,
+      "startLevel": 1,
+      "constructionTime": 240,
+      "upgradeCost": {
+        "wood": 600,
+        "stone": 500,
+        "clay": 400
+      },
+      "buildingTimeDecrease": 15,
+      "points": 10
+    },
+    {
+      "id": 11,
+      "name": "Hall of the People",
+      "description": "A large hall that can house a growing population.",
+      "maxLevel": 10,
+      "startLevel": 1,
+      "constructionTime": 150,
+      "upgradeCost": {
+        "wood": 300,
+        "stone": 200,
+        "clay": 150
+      },
+      "populationCapacityIncrease": 10,
+      "points": 8
+    },
+    {
+      "id": 12,
+      "name": "Stone Wall",
+      "description": "A sturdy wall built around the village to protect it from enemy raids.",
+      "maxLevel": 15,
+      "startLevel": 0,
+      "constructionTime": 200,
+      "upgradeCost": {
+        "wood": 500,
+        "stone": 700,
+        "clay": 300,
+        "grain": 400
+      },
+      "defenseBonus": 5,
+      "populationCapacityIncrease": 2,
+      "points": 12
+    }
+  ]
+}

@@ -1,28 +1,32 @@
-package controllers
+package functions
 
 import (
 	"log"
 
 	"github.com/JonasLindermayr/clans-of-the-north/backend/models"
+	"github.com/JonasLindermayr/clans-of-the-north/backend/registry"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/utils"
 )
 
-func createInitialPlayerVillage(uuid uint, username string) {
+func createInitialVillage(uuid uint, villageName string) {
 
 	village := models.Village{
-		Name: username + "'s Village",
+		Name: villageName,
 		UserID: uuid,
 		CordX: 0,
 		CordY: 0,
-		Points: 10,
+		Points: 0,
 	}
 
-	
+
 	if err := utils.DB.Create(&village).Error; err != nil {
 		log.Fatal("error while creating village")
 		return
 	}
 	
-	createInitialResources(village.ID)
 
+	CreateInitialResources(village.ID)
+	CreateInitialBuildings(village.ID)
+
+	registry.ReloadCache()
 }

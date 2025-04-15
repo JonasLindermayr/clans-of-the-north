@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/JonasLindermayr/clans-of-the-north/backend/functions"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/models"
 	"github.com/JonasLindermayr/clans-of-the-north/backend/utils"
 	"github.com/gin-gonic/gin"
@@ -72,10 +73,12 @@ func LoginUser(c *gin.Context) {
 		return
 	}
 
-	EnsureUserHasVillage(userFound.ID, userFound.Username)
+	functions.EnsureUserHasVillage(userFound.ID, userFound.Username)
 
 	generateToken := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"id":    userFound.ID,
+		"username": userFound.Username,
+		"email": userFound.Email,
 		"exp": time.Now().Add(time.Hour * 24).Unix(),
 	})
 

@@ -8,12 +8,15 @@ import {
   TextInput,
   Title,
 } from "@mantine/core";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import "./login.css";
+import { AuthContext } from "../../AuthContext";
 
 export function Login() {
+  const { login } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -27,10 +30,9 @@ export function Login() {
         password,
       });
 
-      sessionStorage.setItem("token", response.data.token);
-
       const decoded = jwtDecode(response.data.token);
       console.log(decoded);
+      login(response.data.token, decoded);
     } catch (err) {
       setError("Login failed: " + (err.response?.data?.error || err.message));
     }

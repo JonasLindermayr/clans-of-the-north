@@ -5,13 +5,16 @@ import "./index.css";
 import App from "./App.jsx";
 import "@mantine/core/styles.css";
 import { MantineProvider } from "@mantine/core";
+import { AuthProvider } from "./AuthContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <MantineProvider>
-        <App />
-      </MantineProvider>
+      <AuthProvider>
+        <MantineProvider>
+          <App />
+        </MantineProvider>
+      </AuthProvider>
     </BrowserRouter>
   </StrictMode>
 );

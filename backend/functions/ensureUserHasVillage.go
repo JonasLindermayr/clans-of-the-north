@@ -1,4 +1,4 @@
-package controllers
+package functions
 
 import (
 	"github.com/JonasLindermayr/clans-of-the-north/backend/models"
@@ -13,8 +13,6 @@ func EnsureUserHasVillage(uuid uint, username string) {
 		return
 	}
 
-	createInitialPlayerVillage(uuid, username)
-
-
+	createInitialVillage(uuid, username + "'s Village")
 
 }
